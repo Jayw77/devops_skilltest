@@ -1,0 +1,5 @@
+# curl web app
+On host machine run "curl http://0.0.0.0:8080"
+
+Hello World
+

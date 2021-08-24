@@ -1,0 +1,153 @@
+# Run container as deamon on host machine
+
+"docker run -d -p 8080:8080 node-web-app"
+
+# Docker image details. can use history and inspect options of docker-cli to view docker images details
+
+"docker history  node-web-app:latest"
+
+IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
+bcc63f8e1183   10 minutes ago   /bin/sh -c #(nop)  CMD ["node" "server.js"]     0B        
+09865fcdf551   10 minutes ago   /bin/sh -c #(nop)  EXPOSE 8080                  0B        
+a2dbe1b2313f   10 minutes ago   /bin/sh -c #(nop) COPY file:60d3d26aaa4d1238…   274B      
+53dbfd297632   10 minutes ago   /bin/sh -c npm install                          3.26MB    
+9f09a39b3576   10 minutes ago   /bin/sh -c #(nop) COPY file:1f55faad3b60d660…   266B      
+13b851693880   10 minutes ago   /bin/sh -c #(nop) WORKDIR /usr/src/app          0B        
+e979a7f5b083   11 days ago      /bin/sh -c #(nop)  CMD ["node"]                 0B        
+<missing>      11 days ago      /bin/sh -c #(nop)  ENTRYPOINT ["docker-entry…   0B        
+<missing>      11 days ago      /bin/sh -c #(nop) COPY file:238737301d473041…   116B      
+<missing>      11 days ago      /bin/sh -c apk add --no-cache --virtual .bui…   7.62MB    
+<missing>      11 days ago      /bin/sh -c #(nop)  ENV YARN_VERSION=1.22.5      0B        
+<missing>      11 days ago      /bin/sh -c addgroup -g 1000 node     && addu…   104MB     
+<missing>      11 days ago      /bin/sh -c #(nop)  ENV NODE_VERSION=14.17.5     0B        
+<missing>      4 months ago     /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B        
+<missing>      4 months ago     /bin/sh -c #(nop) ADD file:282b9d56236cae296…   5.62MB    
+
+"docker inspect  node-web-app:latest"
+
+[
+    {
+        "Id": "sha256:bcc63f8e11838737b68facb8bce6b9f42b28f2b4d9bf750802851895816383b2",
+        "RepoTags": [
+            "node-web-app:latest"
+        ],
+        "RepoDigests": [],
+        "Parent": "sha256:09865fcdf55111437cb4d5e7d069ae292390d2a7a2a28270f05a3b37479d00e2",
+        "Comment": "",
+        "Created": "2021-08-24T09:09:39.862917388Z",
+        "Container": "ccd722cafeb6aee1dd8ac3c8852e381398a290ac46422cb0b159521929e4e4d5",
+        "ContainerConfig": {
+            "Hostname": "ccd722cafeb6",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NODE_VERSION=14.17.5",
+                "YARN_VERSION=1.22.5"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "#(nop) ",
+                "CMD [\"node\" \"server.js\"]"
+            ],
+            "Image": "sha256:09865fcdf55111437cb4d5e7d069ae292390d2a7a2a28270f05a3b37479d00e2",
+            "Volumes": null,
+            "WorkingDir": "/usr/src/app",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "DockerVersion": "20.10.8",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NODE_VERSION=14.17.5",
+                "YARN_VERSION=1.22.5"
+            ],
+            "Cmd": [
+                "node",
+                "server.js"
+            ],
+            "Image": "sha256:09865fcdf55111437cb4d5e7d069ae292390d2a7a2a28270f05a3b37479d00e2",
+            "Volumes": null,
+            "WorkingDir": "/usr/src/app",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": null
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 120458608,
+        "VirtualSize": 120458608,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/2a223317f94668aab2cb0f677dd42ade325a32d2437c7baf380bf94f327ce0dd/diff:/var/lib/docker/overlay2/7ffde19c1194fd335c6f1df4922a8977fadab399454518c51fd2fc289b84fda1/diff:/var/lib/docker/overlay2/cd54e4469bd183bae59f0063f4fee0c7cc9ada3c10b920deb6d349a828187fd6/diff:/var/lib/docker/overlay2/317484c1ced08ce93aeaac76c31c1fc41a6aa32cd54058df8b926288c71f7f2a/diff:/var/lib/docker/overlay2/e67984f57b33278ae2160f0545156f85db3daf7bd7ec9fccf904796f9c89f203/diff:/var/lib/docker/overlay2/15ff7e2fc81a88265d998c47e907749fbdb3f6a97aa79efc6c477a591bb1bc03/diff:/var/lib/docker/overlay2/91855b99ff6387c071cbf948b482e7712541adac985e179b22e5ea5dc3a6bab5/diff",
+                "MergedDir": "/var/lib/docker/overlay2/c44e54a44d1cf47c9729606ca8276ffe1d79a5c1a9e276173017b43baacf51fd/merged",
+                "UpperDir": "/var/lib/docker/overlay2/c44e54a44d1cf47c9729606ca8276ffe1d79a5c1a9e276173017b43baacf51fd/diff",
+                "WorkDir": "/var/lib/docker/overlay2/c44e54a44d1cf47c9729606ca8276ffe1d79a5c1a9e276173017b43baacf51fd/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:9a5d14f9f5503e55088666beef7e85a8d9625d4fa7418e2fe269e9c54bcb853c",
+                "sha256:1af2bec92d49c6200e3a0c53290c3d1330e37e3c010f6794de687899bf466f34",
+                "sha256:1672d76d94c2e2e2169ac1f082f7149c6902fc382834e1b2379d6958c7b5de30",
+                "sha256:30dd76952e8dbd3750d9387547485467b51549597fda21507d970c710110e12d",
+                "sha256:0d1f2c06e4bc8fe1b38a13d8adbeb0c96692c3912d0aa64011a77b6a7b990c73",
+                "sha256:943f81ba84f5758c03e4576a9c39d706ed2bedacb6ea5e696bd1e9a603c8f89d",
+                "sha256:3ebcbe030b4aadca5cb9ee8cc3f1d7088ba26f268c2d20e284b32c21dd4265aa",
+                "sha256:088f389cdd10aabfb2d158fc8add6ae292d3283c00d99ac53bcd9cad2c10ad56"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2021-08-24T11:09:39.886766121+02:00"
+        }
+    }
+]
+
+# Docker process
+On host machine we can use "docker ps"
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+c1e5d33634e7   node-web-app   "docker-entrypoint.s…"   6 minutes ago   Up 6 minutes   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   sweet_dirac
+
+"docker top c1e5d33634e7" will show process info on container
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                673254              673230              0                   11:14               pts/0               00:00:00            /sbin/docker-init -- docker-entrypoint.sh node server.js
+root                673285              673254              0                   11:14               pts/0               00:00:00            node server.js
+
+# Docker logs
+
+"docker logs c1e5d33634e7"
+
+Running on http://0.0.0.0:8080
+
